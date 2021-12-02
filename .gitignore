@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/aoc2021/day1/obj
+/aoc2021/day1/bin/Release/net5.0
+/aoc2021/.vs/aoc2021
