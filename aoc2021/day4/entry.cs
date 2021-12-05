@@ -66,6 +66,29 @@ namespace day4 {
       return tables;
     }
 
+    static bool table_won(table_entry[][] table) {
+      for (var i = 0; i < BOARD_SIZE; i++) {
+        var j = 0;
+        while (j < BOARD_SIZE && table[i][j].marked) ++j;
+        if (j >= BOARD_SIZE) return true;
+
+        j = 0;
+        while (j < BOARD_SIZE && table[j][i].marked) ++j;
+        if (j >= BOARD_SIZE) return true;
+      }
+
+      return false;
+    }
+
+    static int table_sum(table_entry[][] table) {
+      var sum = 0;
+      for (var i = 0; i < BOARD_SIZE; i++)
+        for (var j = 0; j < BOARD_SIZE; j++)
+          if (!table[i][j].marked)
+            sum += table[i][j].value;
+      return sum;
+    }
+
     static (int, int) solve(int[] numbers, table_entry[][][] tables) {
       var current_number = 0;
       var succeded_results = new List<int>();
@@ -75,64 +98,15 @@ namespace day4 {
           if (table[0][0].won)
             continue;
 
-          for (int i = 0; i < BOARD_SIZE; i++) {
-            for (int j = 0; j < BOARD_SIZE; j++) {
+          for (int i = 0; i < BOARD_SIZE; i++)
+            for (int j = 0; j < BOARD_SIZE; j++)
               if (table[i][j].value == numbers[current_number])
                 table[i][j].marked = true;
-            }
+
+          if (table_won(table)) {
+            succeded_results.Add(table_sum(table) * numbers[current_number]);
+            table[0][0].won = true;
           }
-
-          bool all_marked = true;
-
-          for (int i = 0; i < BOARD_SIZE; i++) {
-            for (int j = 0; j < BOARD_SIZE; j++) {
-              all_marked &= table[i][j].marked;
-            }
-
-            if (all_marked) {
-              int sum = 0;
-
-              for (int k = 0; k < BOARD_SIZE; k++)
-                for (int l = 0; l < BOARD_SIZE; l++)
-                  if (table[k][l].marked == false)
-                    sum += table[k][l].value;
-
-              if (!table[0][0].won) {
-                succeded_results.Add(sum * numbers[current_number]);
-                table[0][0].won = true;
-              }
-
-              break;
-            }
-
-            all_marked = true;
-          }
-
-          all_marked = true;
-
-          for (int i = 0; i < BOARD_SIZE; i++) {
-            for (int j = 0; j < BOARD_SIZE; j++) {
-              all_marked &= table[j][i].marked;
-            }
-
-            if (all_marked) {
-              int sum = 0;
-
-              for (int k = 0; k < BOARD_SIZE; k++)
-                for (int l = 0; l < BOARD_SIZE; l++)
-                  if (table[k][l].marked == false)
-                    sum += table[k][l].value;
-
-              if (!table[0][0].won) {
-                succeded_results.Add(sum * numbers[current_number]);
-                table[0][0].won = true;
-              }
-
-              break;
-            }
-
-            all_marked = true;
-          }  
         }
 
         current_number++;
