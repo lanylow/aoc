@@ -55,8 +55,6 @@ namespace day7 {
       for (var i = 0; i < split.Length; i++)
         crabs[i] = int.Parse(split[i]);
 
-      get_used_fuel_after_moving_step(crabs, 5);
-
       Console.WriteLine("Fuel spent aligning to a horizontal position (Part 1): " + get_cheapest_aligning(crabs));
       Console.WriteLine("Fuel spent aligning to a horizontal position with proper crab engineering (Part 2): " + get_cheapest_aligning(crabs, true));
 
