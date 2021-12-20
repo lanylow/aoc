@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 
-int table[1024][1024];
+int table[256][256];
 int table_cnt;
-int buff[1024][1024];
-int map[1024] = { 0 };
+int buff[256][256];
+int map[256] = { 0 };
 int def = 0;
 
 char* fgetstripped(char* buf, int cnt, FILE* file) {
@@ -100,4 +100,6 @@ int main(int argc, char** argv) {
     res = enhance();
 
   printf("Lit pixels after applying the algorithm 50 times: %d\n", res);
+
+  system("pause");
 }
