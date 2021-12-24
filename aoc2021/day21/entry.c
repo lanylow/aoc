@@ -11,15 +11,6 @@ void swap(uint64_t* l, uint64_t* r) {
   *r = t;
 }
 
-char* fgetstripped(char* buf, int cnt, FILE* file) {
-  char* tmp = fgets(buf, cnt, file);
-
-  if (tmp && tmp[strlen(tmp) - 1] == '\n')
-    tmp[strlen(tmp) - 1] = '\0';
-
-  return tmp;
-}
-
 void parse() {
   FILE* file = fopen("input.txt", "r");
   int tmp;
