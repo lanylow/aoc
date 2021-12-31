@@ -16,7 +16,7 @@ public class Main {
 
   private static Map<String, List<Range>> parse() throws IOException {
     Map<String, List<Range>> fields = new HashMap<>();
-    var bufferedReader = new BufferedReader(new FileReader("C:\\Users\\lanyl\\Documents\\src\\aoc\\aoc2020\\day16\\input.txt"));
+    var bufferedReader = new BufferedReader(new FileReader("input.txt"));
 
     String line = bufferedReader.readLine();
 
