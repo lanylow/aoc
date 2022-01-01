@@ -1,8 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
 public class Main {
   private static class Vector3D {
     public final int x, y, z;
