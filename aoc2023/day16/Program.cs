@@ -37,6 +37,7 @@ public static class Program
             .Concat(Enumerable.Range(0, input[0].Length).Select(x => (0, x, Direction.Down)))
             .Concat(Enumerable.Range(0, input.Count).Where(y => y > 0).Select(y => (y, input[y].Length - 1, Direction.Left)))
             .Concat(Enumerable.Range(0, input[^1].Length).Select(x => (input.Count - 1, x, Direction.Up)))
+            .AsParallel()
             .Select(x => Simulate(input, x.Item1, x.Item2, x.Item3))
             .Max();
     
