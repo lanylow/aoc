@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace day15;
+﻿namespace day15;
 
 public static class Program
 {
